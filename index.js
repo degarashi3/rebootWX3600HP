@@ -12,8 +12,9 @@ const puppeteer = require('puppeteer');
   await page.keyboard.type('admin');
   await page.keyboard.press('Tab');
   await page.keyboard.type('<password>');
+  await page.keyboard.press('Tab');
   await Promise.all([
-    page.waitForNavigation(),
+    page.waitForNavigation({ waitUntil: 'networkidle0' }),
     await page.keyboard.press('Enter')
   ]);
 
@@ -46,7 +47,7 @@ const puppeteer = require('puppeteer');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   await Promise.all([
-    page.waitForNavigation(),
+    page.waitForNavigation({ waitUntil: 'networkidle0' }),
     await page.keyboard.press('Enter')
   ]);
 
@@ -56,10 +57,7 @@ const puppeteer = require('puppeteer');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
-  await Promise.all([
-    page.waitForNavigation(),
-    await page.keyboard.press('Enter')
-  ]);
+  await page.keyboard.press('Enter');
 
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
@@ -69,11 +67,9 @@ const puppeteer = require('puppeteer');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   await Promise.all([
-    page.waitForNavigation(),
+    page.waitForNavigation({ waitUntil: 'networkidle0' }),
     await page.keyboard.press('Enter')
   ]);
-
-  await page.screenshot({ path: 'example.png' });
 
   await browser.close();
 })();
