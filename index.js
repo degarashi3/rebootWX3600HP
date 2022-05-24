@@ -5,13 +5,13 @@ const puppeteer = require('puppeteer');
     executablePath: '/usr/bin/chromium-browser'
   })
   const page = await browser.newPage();
-  await page.goto('http://192.168.0.1/page/login_main.html');
+  await page.setDefaultNavigationTimeout(0);
+  await page.goto('http://<your-WX3600HP-IP-address>/page/login_main.html');
 
   await page.keyboard.press('Tab');
   await page.keyboard.type('admin');
   await page.keyboard.press('Tab');
-  await page.keyboard.type('');
-
+  await page.keyboard.type('<password>');
   await Promise.all([
     page.waitForNavigation(),
     await page.keyboard.press('Enter')
