@@ -39,6 +39,5 @@ const puppeteer = require('puppeteer');
     page.waitForNavigation({ waitUntil: 'networkidle0' }),
     await page.keyboard.press('Enter')
   ]);
-  await page.screenshot({ path: 'example.png' });
   await browser.close();
 })();
